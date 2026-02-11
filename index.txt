@@ -3,274 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Calculator</title>
+    <title>RIT Instant Calculator</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
+            [cite_start]margin: 0; [cite: 1]
+            [cite_start]padding: 0; [cite: 2]
             box-sizing: border-box;
         }
 
         body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: #0d1117;
-            color: #e6edf3;
-            padding: 20px;
+            [cite_start]min-height: 100vh; [cite: 3]
+            [cite_start]display: flex; [cite: 3]
+            [cite_start]flex-direction: column; [cite: 3]
+            [cite_start]align-items: center; [cite: 3]
+            [cite_start]justify-content: center; [cite: 3]
+            [cite_start]font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; [cite: 3]
+            /* Secondary Palette: Black */
+            background: #000000;
+            color: #FFFFFF;
+            [cite_start]padding: 20px; [cite: 4]
         }
 
         h1 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-            color: #8b949e;
-            letter-spacing: 0.02em;
+            [cite_start]font-size: 1.4rem; [cite: 4]
+            [cite_start]font-weight: 500; [cite: 5]
+            [cite_start]margin-bottom: 24px; [cite: 5]
+            /* Primary Palette: RIT Orange */
+            color: #F76902;
+            [cite_start]letter-spacing: 0.02em; [cite: 5]
         }
 
         .calculator {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 16px;
-            padding: 24px;
-            width: 320px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            /* Secondary Palette: Black for background, Warm Gray 1 C for border */
+            background: #000000;
+            border: 1px solid #D7D2CB;
+            [cite_start]border-radius: 16px; [cite: 6]
+            [cite_start]padding: 24px; [cite: 6]
+            [cite_start]width: 320px; [cite: 6]
+            /* Using Orange for a branded glow effect */
+            box-shadow: 0 8px 32px rgba(247, 105, 2, 0.15);
         }
 
         .display {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 16px 20px;
-            margin-bottom: 20px;
-            text-align: right;
-            min-height: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            [cite_start]background: #000000; [cite: 8]
+            /* Neutral: PMS 430C */
+            border: 1px solid #7C878E;
+            [cite_start]border-radius: 10px; [cite: 8]
+            [cite_start]padding: 16px 20px; [cite: 8]
+            [cite_start]margin-bottom: 20px; [cite: 8]
+            [cite_start]text-align: right; [cite: 8]
+            [cite_start]min-height: 80px; [cite: 8]
+            [cite_start]display: flex; [cite: 8]
+            [cite_start]flex-direction: column; [cite: 8]
+            [cite_start]justify-content: flex-end; [cite: 9]
         }
 
         .display .previous {
-            font-size: 0.9rem;
-            color: #484f58;
-            min-height: 1.2em;
-            word-break: break-all;
+            [cite_start]font-size: 0.9rem; [cite: 10]
+            /* Neutral: PMS 427C */
+            color: #D0D3D4;
+            [cite_start]min-height: 1.2em; [cite: 10]
+            [cite_start]word-break: break-all; [cite: 10]
         }
 
         .display .current {
-            font-size: 2.2rem;
-            font-weight: 300;
-            color: #e6edf3;
-            word-break: break-all;
-            line-height: 1.2;
+            [cite_start]font-size: 2.2rem; [cite: 11]
+            [cite_start]font-weight: 300; [cite: 11]
+            /* Primary: White */
+            color: #FFFFFF;
+            [cite_start]word-break: break-all; [cite: 11]
+            [cite_start]line-height: 1.2; [cite: 11]
         }
 
         .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            [cite_start]display: grid; [cite: 12]
+            [cite_start]grid-template-columns: repeat(4, 1fr); [cite: 12]
+            [cite_start]gap: 10px; [cite: 12]
         }
 
         button {
-            padding: 18px;
-            font-size: 1.15rem;
-            font-family: inherit;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.12s ease;
-            font-weight: 400;
-            background: #21262d;
-            color: #e6edf3;
+            [cite_start]padding: 18px; [cite: 13]
+            [cite_start]font-size: 1.15rem; [cite: 13]
+            [cite_start]font-family: inherit; [cite: 13]
+            /* Neutral: PMS 429C */
+            border: 1px solid #A2AAAD;
+            [cite_start]border-radius: 10px; [cite: 13]
+            [cite_start]cursor: pointer; [cite: 13]
+            [cite_start]transition: all 0.12s ease; [cite: 13]
+            [cite_start]font-weight: 400; [cite: 13]
+            [cite_start]background: #000000; [cite: 13]
+            [cite_start]color: #FFFFFF; [cite: 14]
         }
 
         button:hover {
-            background: #30363d;
+            /* Secondary: Warm Gray 5C */
+            background: #ACA39A;
+            color: #000000;
         }
 
         button:active {
-            transform: scale(0.96);
+            [cite_start]transform: scale(0.96); [cite: 16]
         }
 
         button.operator {
-            background: #1f6feb;
-            border-color: #1f6feb;
-            color: #fff;
-            font-weight: 500;
+            /* Primary: RIT Orange */
+            background: #F76902;
+            [cite_start]border-color: #F76902; [cite: 17]
+            [cite_start]color: #FFFFFF; [cite: 17]
+            [cite_start]font-weight: 500; [cite: 17]
         }
 
         button.operator:hover {
-            background: #388bfd;
+            /* Lightening the orange slightly for hover effect */
+            background: #FF8533;
         }
 
         button.clear {
-            background: #da3633;
-            border-color: #da3633;
-            color: #fff;
+            /* Accent: PMS 485C */
+            background: #DA291C;
+            [cite_start]border-color: #DA291C; [cite: 19]
+            [cite_start]color: #FFFFFF; [cite: 19]
         }
 
         button.clear:hover {
-            background: #f85149;
+            background: #B02016;
         }
 
         button.equals {
-            background: #238636;
-            border-color: #238636;
-            color: #fff;
-            font-weight: 500;
+            /* Primary: RIT Orange */
+            background: #F76902;
+            [cite_start]border-color: #F76902; [cite: 21]
+            [cite_start]color: #FFFFFF; [cite: 21]
+            [cite_start]font-weight: 500; [cite: 21]
         }
 
         button.equals:hover {
-            background: #2ea043;
+            /* Flip to White with Orange text */
+            background: #FFFFFF;
+            color: #F76902;
         }
 
         button.wide {
-            grid-column: span 2;
+            [cite_start]grid-column: span 2; [cite: 23]
         }
 
         .footer {
-            margin-top: 32px;
-            font-size: 0.8rem;
-            color: #484f58;
+            [cite_start]margin-top: 32px; [cite: 24]
+            [cite_start]font-size: 0.8rem; [cite: 24]
+            /* Neutral: PMS 430C */
+            color: #7C878E;
         }
 
         .footer a {
-            color: #58a6ff;
-            text-decoration: none;
+            /* Primary: RIT Orange */
+            color: #F76902;
+            [cite_start]text-decoration: none; [cite: 25]
         }
 
         .footer a:hover {
-            text-decoration: underline;
+            [cite_start]text-decoration: underline; [cite: 26]
         }
     </style>
 </head>
 <body>
 
-    <h1>Instant Calculator</h1>
+    <h1>RIT Instant Calculator</h1>
 
     <div class="calculator">
         <div class="display">
-            <div class="previous" id="previous"></div>
-            <div class="current" id="current">0</div>
+            [cite_start]<div class="previous" id="previous"></div> [cite: 27]
+            [cite_start]<div class="current" id="current">0</div> [cite: 27]
         </div>
         <div class="buttons">
-            <button class="clear wide" onclick="clearAll()">Clear</button>
-            <button onclick="backspace()">&#9003;</button>
-            <button class="operator" onclick="setOperator('/')">÷</button>
+            [cite_start]<button class="clear wide" onclick="clearAll()">Clear</button> [cite: 27]
+            [cite_start]<button onclick="backspace()">&#9003;</button> [cite: 27]
+            [cite_start]<button class="operator" onclick="setOperator('/')">÷</button> [cite: 27]
 
-            <button onclick="appendNumber('7')">7</button>
-            <button onclick="appendNumber('8')">8</button>
-            <button onclick="appendNumber('9')">9</button>
-            <button class="operator" onclick="setOperator('*')">×</button>
+            [cite_start]<button onclick="appendNumber('7')">7</button> [cite: 27]
+            [cite_start]<button onclick="appendNumber('8')">8</button> [cite: 27]
+            [cite_start]<button onclick="appendNumber('9')">9</button> [cite: 27]
+            [cite_start]<button class="operator" onclick="setOperator('*')">×</button> [cite: 27]
 
-            <button onclick="appendNumber('4')">4</button>
-            <button onclick="appendNumber('5')">5</button>
-            <button onclick="appendNumber('6')">6</button>
-            <button class="operator" onclick="setOperator('-')">−</button>
+            [cite_start]<button onclick="appendNumber('4')">4</button> [cite: 27]
+            [cite_start]<button onclick="appendNumber('5')">5</button> [cite: 27]
+            [cite_start]<button onclick="appendNumber('6')">6</button> [cite: 28]
+            [cite_start]<button class="operator" onclick="setOperator('-')">−</button> [cite: 28]
 
-            <button onclick="appendNumber('1')">1</button>
-            <button onclick="appendNumber('2')">2</button>
-            <button onclick="appendNumber('3')">3</button>
-            <button class="operator" onclick="setOperator('+')">+</button>
+            [cite_start]<button onclick="appendNumber('1')">1</button> [cite: 28]
+            [cite_start]<button onclick="appendNumber('2')">2</button> [cite: 28]
+            [cite_start]<button onclick="appendNumber('3')">3</button> [cite: 28]
+            [cite_start]<button class="operator" onclick="setOperator('+')">+</button> [cite: 28]
 
-            <button onclick="appendNumber('0')">0</button>
-            <button onclick="appendNumber('.')">.</button>
-            <button class="equals wide" onclick="calculate()">=</button>
+            [cite_start]<button onclick="appendNumber('0')">0</button> [cite: 28]
+            [cite_start]<button onclick="appendNumber('.')">.</button> [cite: 28]
+            [cite_start]<button class="equals wide" onclick="calculate()">=</button> [cite: 29]
         </div>
     </div>
 
-    <p class="footer">Built for MGIS 360 &middot; Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+    [cite_start]<p class="footer">Built for MGIS 360 &middot; [cite: 30]
+    [cite_start]Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p> [cite: 30]
 
     <script>
-        let current = '0';
-        let previous = '';
-        let operator = null;
-        let resetNext = false;
+        [cite_start]// JS logic provided in original file [cite: 31-55]
+        [cite_start]let current = '0'; [cite: 31]
+        [cite_start]let previous = ''; [cite: 31]
+        [cite_start]let operator = null; [cite: 31]
+        [cite_start]let resetNext = false; [cite: 31]
 
-        function updateDisplay() {
-            document.getElementById('current').textContent = current;
-            document.getElementById('previous').textContent = previous;
-        }
+        [cite_start]function updateDisplay() { [cite: 32]
+            [cite_start]document.getElementById('current').textContent = current; [cite: 33]
+            [cite_start]document.getElementById('previous').textContent = previous; [cite: 33]
+        [cite_start]} [cite: 33]
 
-        function appendNumber(num) {
-            if (resetNext) {
-                current = '0';
-                resetNext = false;
-            }
-            if (num === '.' && current.includes('.')) return;
-            if (current === '0' && num !== '.') {
-                current = num;
-            } else {
-                current += num;
-            }
-            updateDisplay();
-        }
+        [cite_start]function appendNumber(num) { [cite: 34]
+            [cite_start]if (resetNext) { [cite: 34]
+                [cite_start]current = '0'; [cite: 34]
+                [cite_start]resetNext = false; [cite: 34]
+            [cite_start]} [cite: 34]
+            [cite_start]if (num === '.' && current.includes('.')) return; [cite: 35]
+            [cite_start]if (current === '0' && num !== '.') { [cite: 36]
+                [cite_start]current = num; [cite: 36]
+            [cite_start]} else { [cite: 37]
+                [cite_start]current += num; [cite: 37]
+            [cite_start]} [cite: 37]
+            [cite_start]updateDisplay(); [cite: 38]
+        [cite_start]} [cite: 38]
 
-        function setOperator(op) {
-            if (operator && !resetNext) {
-                calculate();
-            }
-            const symbols = {'/': '÷', '*': '×', '-': '−', '+': '+'};
-            previous = current + ' ' + symbols[op];
-            operator = op;
-            resetNext = true;
-            updateDisplay();
-        }
+        [cite_start]function setOperator(op) { [cite: 39]
+            [cite_start]if (operator && !resetNext) { [cite: 39]
+                [cite_start]calculate(); [cite: 39]
+            [cite_start]} [cite: 39]
+            [cite_start]const symbols = {'/': '÷', '*': '×', '-': '−', '+': '+'}; [cite: 40]
+            [cite_start]previous = current + ' ' + symbols[op]; [cite: 41]
+            [cite_start]operator = op; [cite: 41]
+            [cite_start]resetNext = true; [cite: 41]
+            [cite_start]updateDisplay(); [cite: 41]
+        [cite_start]} [cite: 41]
 
-        function calculate() {
-            if (!operator) return;
-            const a = parseFloat(previous);
-            const b = parseFloat(current);
-            let result;
+        [cite_start]function calculate() { [cite: 42]
+            [cite_start]if (!operator) return; [cite: 42]
+            [cite_start]const a = parseFloat(previous); [cite: 43]
+            [cite_start]const b = parseFloat(current); [cite: 44]
+            [cite_start]let result; [cite: 44]
+            [cite_start]switch (operator) { [cite: 44]
+                [cite_start]case '+': result = a + b; break; [cite: 45]
+                [cite_start]case '-': result = a - b; break; [cite: 45]
+                [cite_start]case '*': result = a * b; break; [cite: 45]
+                case '/': result = b === 0 ? [cite_start]'Error' : a / b; break; [cite: 46]
+            [cite_start]} [cite: 46]
 
-            switch (operator) {
-                case '+': result = a + b; break;
-                case '-': result = a - b; break;
-                case '*': result = a * b; break;
-                case '/': result = b === 0 ? 'Error' : a / b; break;
-            }
+            [cite_start]if (result === 'Error') { [cite: 47]
+                [cite_start]current = 'Error'; [cite: 47]
+            [cite_start]} else { [cite: 48]
+                [cite_start]result = Math.round(result * 1e10) / 1e10; [cite: 48]
+                [cite_start]current = result.toString(); [cite: 49]
+            [cite_start]} [cite: 49]
 
-            if (result === 'Error') {
-                current = 'Error';
-            } else {
-                result = Math.round(result * 1e10) / 1e10;
-                current = result.toString();
-            }
+            [cite_start]previous = ''; [cite: 49]
+            [cite_start]operator = null; [cite: 50]
+            [cite_start]resetNext = true; [cite: 50]
+            [cite_start]updateDisplay(); [cite: 50]
+        [cite_start]} [cite: 50]
 
-            previous = '';
-            operator = null;
-            resetNext = true;
-            updateDisplay();
-        }
+        [cite_start]function clearAll() { [cite: 51]
+            [cite_start]current = '0'; [cite: 51]
+            [cite_start]previous = ''; [cite: 51]
+            [cite_start]operator = null; [cite: 51]
+            [cite_start]resetNext = false; [cite: 51]
+            [cite_start]updateDisplay(); [cite: 52]
+        [cite_start]} [cite: 52]
 
-        function clearAll() {
-            current = '0';
-            previous = '';
-            operator = null;
-            resetNext = false;
-            updateDisplay();
-        }
+        [cite_start]function backspace() { [cite: 53]
+            [cite_start]if (resetNext) return; [cite: 53]
+            [cite_start]current = current.length > 1 ? current.slice(0, -1) : '0'; [cite: 54]
+            [cite_start]updateDisplay(); [cite: 55]
+        [cite_start]} [cite: 55]
 
-        function backspace() {
-            if (resetNext) return;
-            current = current.length > 1 ? current.slice(0, -1) : '0';
-            updateDisplay();
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key >= '0' && e.key <= '9') appendNumber(e.key);
-            else if (e.key === '.') appendNumber('.');
-            else if (e.key === '+') setOperator('+');
-            else if (e.key === '-') setOperator('-');
-            else if (e.key === '*') setOperator('*');
-            else if (e.key === '/') { e.preventDefault(); setOperator('/'); }
-            else if (e.key === 'Enter' || e.key === '=') calculate();
-            else if (e.key === 'Backspace') backspace();
-            else if (e.key === 'Escape') clearAll();
-        });
+        [cite_start]document.addEventListener('keydown', function(e) { [cite: 55]
+            [cite_start]if (e.key >= '0' && e.key <= '9') appendNumber(e.key); [cite: 55]
+            [cite_start]else if (e.key === '.') appendNumber('.'); [cite: 55]
+            [cite_start]else if (e.key === '+') setOperator('+'); [cite: 55]
+            [cite_start]else if (e.key === '-') setOperator('-'); [cite: 55]
+            [cite_start]else if (e.key === '*') setOperator('*'); [cite: 55]
+            else if (e.key === '/') { e.preventDefault(); setOperator('/'); [cite_start]} [cite: 55]
+            [cite_start]else if (e.key === 'Enter' || e.key === '=') calculate(); [cite: 55]
+            [cite_start]else if (e.key === 'Backspace') backspace(); [cite: 55]
+            [cite_start]else if (e.key === 'Escape') clearAll(); [cite: 55]
+        [cite_start]}); [cite: 55]
     </script>
 
 </body>
